@@ -32,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ words }) => (
           <span className="text-blue-500">
             <TextGenerateEffect words={words} />
           </span>{" "}
-          a web developer.
+          a developer.
         </motion.h1>
 
         {/* Subtle tagline */}
@@ -42,8 +42,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ words }) => (
           transition={{ duration: 0.5, delay: 0.8 }}
           className="text-2xl mt-6 text-gray-600"
         >
-          crafting digital experiences with <span className="text-blue-500 font-semibold">passion</span> and{" "}
-          <span className="text-blue-500 font-semibold">precision</span>
+          specializing in <span className="text-blue-500 font-semibold">backend development</span> and <span className="text-blue-500 font-semibold">AI solutions</span>
         </motion.p>
 
         {/* Get in touch button */}

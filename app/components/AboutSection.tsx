@@ -1,23 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const technologies = [
   { name: "react", url: "https://react.dev/", category: "frontend" },
+  { name: "next.js", url: "https://nextjs.org/", category: "framework" },
   { name: "node.js", url: "https://nodejs.org/", category: "backend" },
   { name: "typescript", url: "https://www.typescriptlang.org/", category: "language" },
-  { name: "mongodb", url: "https://www.mongodb.com/", category: "database" },
-  { name: "tailwindcss", url: "https://tailwindcss.com/", category: "styling" },
-  { name: "next.js", url: "https://nextjs.org/", category: "framework" },
+  { name: "javascript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", category: "language" },
   { name: "python", url: "https://www.python.org/", category: "language" },
-  { name: "express", url: "https://expressjs.com/", category: "backend" },
-]
+  { name: "next-auth", url: "https://next-auth.js.org/", category: "auth" },
+  { name: "imagekit", url: "https://imagekit.io/", category: "media hosting" },
+  { name: "opencv", url: "https://opencv.org/", category: "computer vision" },
+  { name: "ffmpeg", url: "https://ffmpeg.org/", category: "media processing" },
+  { name: "portaudio", url: "http://www.portaudio.com/", category: "audio" },
+
+];
+
 
 const personalValues = [
   {
     title: "continuous learning",
-    description: "i believe in constantly evolving and staying curious about new technologies and methodologies.",
+    description:
+      "i believe in constantly evolving and staying curious about new technologies and methodologies.",
   },
   {
     title: "user-centric design",
@@ -26,19 +32,22 @@ const personalValues = [
   },
   {
     title: "collaborative spirit",
-    description: "i thrive in team environments where ideas are shared freely and everyone contributes to success.",
+    description:
+      "i thrive in team environments where ideas are shared freely and everyone contributes to success.",
   },
-]
+];
 
 const AboutSection = () => {
-  const [activeTab, setActiveTab] = useState("professional")
-  const [hoveredValue, setHoveredValue] = useState<string | null>(null)
+  const [activeTab, setActiveTab] = useState("professional");
+  const [hoveredValue, setHoveredValue] = useState<string | null>(null);
 
   return (
     <section className="py-10 z-10 font-serif" id="about">
       <div className="flex flex-col max-w-8xl px-6 py-8 mx-auto">
         <div className="w-full py-8">
-          <h2 className="text-6xl font-semibold leading-none tracking-tighter py-3">about me</h2>
+          <h2 className="text-6xl font-semibold leading-none tracking-tighter py-3">
+            about me
+          </h2>
 
           {/* Tab navigation */}
           <div className="flex flex-wrap gap-4 mb-8">
@@ -83,31 +92,32 @@ const AboutSection = () => {
           >
             {activeTab === "professional" && (
               <div>
-                <p className="text-2xl mb-6">
-                  i am a <span className="text-blue-500 font-semibold">fullstack developer</span> with a passion for
-                  creating visually stunning and user-friendly web applications. i love learning new things every day
-                  and enjoy building <span className="text-blue-500 font-semibold">solutions</span> that make a strong
-                  visual impact on users.
-                </p>
+<p className="text-2xl mb-6">
+  i am a <span className="text-blue-500 font-semibold">developer</span> specializing in <span className="text-blue-500 font-semibold">backend systems</span> and <span className="text-blue-500 font-semibold">AI-driven solutions</span>, with experience building <span className="text-blue-500 font-semibold">fullstack applications</span>. i’m passionate about making stuff that solves something real, with <span className="text-blue-500 font-semibold">scalable tech</span> and something that actually works, simple.
+</p>
 
-                <p className="text-2xl mb-6">
-                  my approach combines <span className="text-blue-500 font-semibold">technical expertise</span> with
-                  creative problem-solving. i thrive in{" "}
-                  <span className="text-blue-500 font-semibold">collaborative environments</span> where i can contribute
-                  to meaningful projects and learn from talented teammates.
-                </p>
+<p className="text-2xl mb-6">
+  my approach is about tackling problems with what i know while considering how every decision affects <span className="text-blue-500 font-semibold">real-world application</span>. i focus on building things that work in practice, not just on paper. i learn by <span className="text-blue-500 font-semibold">doing</span> and stay up to date with <span className="text-blue-500 font-semibold">new tech</span>. and it’s true — <span className="text-blue-500 font-semibold">talent thrives in collaborative environments</span>.
+</p>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div className="text-center p-4 border border-blue-200 hover:border-blue-500 transition-colors">
-                    <div className="text-3xl font-bold text-blue-500 mb-2">1+</div>
+                    <div className="text-3xl font-bold text-blue-500 mb-2">
+                      2+
+                    </div>
                     <div className="text-xl">years coding</div>
                   </div>
                   <div className="text-center p-4 border border-blue-200 hover:border-blue-500 transition-colors">
-                    <div className="text-3xl font-bold text-blue-500 mb-2">2+</div>
+                    <div className="text-3xl font-bold text-blue-500 mb-2">
+                      6+
+                    </div>
                     <div className="text-xl">projects built</div>
                   </div>
                   <div className="text-center p-4 border border-blue-200 hover:border-blue-500 transition-colors">
-                    <div className="text-3xl font-bold text-blue-500 mb-2">∞</div>
+                    <div className="text-3xl font-bold text-blue-500 mb-2">
+                      ∞
+                    </div>
                     <div className="text-xl">cups of coffee</div>
                   </div>
                 </div>
@@ -115,45 +125,69 @@ const AboutSection = () => {
             )}
 
             {activeTab === "personal" && (
-                <div>
+              <div>
                 <p className="text-2xl mb-6">
-                  when i'm not coding, you'll often catch me <span className="text-blue-500 font-semibold">singing</span> my favorite tunes, diving into <span className="text-blue-500 font-semibold">philosophy books</span>, or sometimes <span className="text-blue-500 font-semibold">gaming with the boys</span> to unwind.
+                  when i'm not coding, you'll often catch me{" "}
+                  <span className="text-blue-500 font-semibold">singing</span>{" "}
+                  my favorite tunes, diving into{" "}
+                  <span className="text-blue-500 font-semibold">
+                    philosophy books
+                  </span>
+                  , or sometimes{" "}
+                  <span className="text-blue-500 font-semibold">
+                    gaming with the boys
+                  </span>{" "}
+                  to unwind.
                 </p>
 
                 <p className="text-2xl mb-6">
-                  i'm passionate about <span className="text-blue-500 font-semibold">open source</span> contributions and believe in giving back to the developer community that has taught me so much. i also enjoy <span className="text-blue-500 font-semibold">mentoring</span> newcomers to the field.
+                  i'm passionate about{" "}
+                  <span className="text-blue-500 font-semibold">
+                    open source
+                  </span>{" "}
+                  contributions and believe in giving back to the developer
+                  community that has taught me so much. i also enjoy{" "}
+                  <span className="text-blue-500 font-semibold">mentoring</span>{" "}
+                  newcomers to the field.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-blue-500">interests</h3>
-                  <ul className="space-y-2 text-xl">
-                    <li>• singing & music</li>
-                    <li>• philosophy & deep reading</li>
-                    <li>• open source projects</li>
-                    <li>• tech podcasts & blogs</li>
-                    <li>• hackathons & coding challenges</li>
-                  </ul>
+                    <h3 className="text-2xl font-semibold mb-4 text-blue-500">
+                      interests
+                    </h3>
+                    <ul className="space-y-2 text-xl">
+                      <li>• singing & music</li>
+                      <li>• philosophy & deep reading</li>
+                      <li>• open source projects</li>
+                      <li>• tech podcasts & blogs</li>
+                      <li>• hackathons & coding challenges</li>
+                    </ul>
                   </div>
                   <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-blue-500">hobbies</h3>
-                  <ul className="space-y-2 text-xl">
-                    <li>• coding</li>
-                    <li>• singing</li>
-                    <li>• reading philosophy</li>
-                    <li>• exploring new coffee shops</li>
-                    <li>• gaming with friends</li>
-                  </ul>
+                    <h3 className="text-2xl font-semibold mb-4 text-blue-500">
+                      hobbies
+                    </h3>
+                    <ul className="space-y-2 text-xl">
+                      <li>• coding</li>
+                      <li>• singing</li>
+                      <li>• reading philosophy</li>
+                      <li>• exploring new coffee shops</li>
+                      <li>• gaming with friends</li>
+                    </ul>
                   </div>
                 </div>
-                </div>
+              </div>
             )}
 
             {activeTab === "values" && (
               <div>
                 <p className="text-2xl mb-8">
-                  my work is guided by core <span className="text-blue-500 font-semibold">principles</span> that shape
-                  how i approach every project and collaboration.
+                  my work is guided by core{" "}
+                  <span className="text-blue-500 font-semibold">
+                    principles
+                  </span>{" "}
+                  that shape how i approach every project and collaboration.
                 </p>
 
                 <div className="space-y-6">
@@ -171,7 +205,9 @@ const AboutSection = () => {
                           : "border-gray-200 hover:border-blue-300"
                       }`}
                     >
-                      <h3 className="text-2xl font-semibold mb-3 text-blue-500">{value.title}</h3>
+                      <h3 className="text-2xl font-semibold mb-3 text-blue-500">
+                        {value.title}
+                      </h3>
                       <p className="text-xl">{value.description}</p>
                     </motion.div>
                   ))}
@@ -184,7 +220,9 @@ const AboutSection = () => {
 
           {/* Technologies section */}
           <div>
-            <h3 className="text-3xl font-semibold leading-none tracking-tighter pb-6">some technologies i work with</h3>
+            <h3 className="text-3xl font-semibold leading-none tracking-tighter pb-6">
+              some technologies i work with
+            </h3>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               {technologies.map((tech, index) => (
@@ -207,21 +245,22 @@ const AboutSection = () => {
               ))}
             </div>
 
-            <p className="text-xl text-gray-600">...and always exploring new tools to add to my toolkit, check out <a
-              href="#skills"
-              className="text-blue-500 font-semibold text-xl hover:underline transition-colors"
+            <p className="text-xl text-gray-600">
+              ...and always exploring new tools to add to my toolkit, check out{" "}
+              <a
+                href="#skills"
+                className="text-blue-500 font-semibold text-xl hover:underline transition-colors"
               >
-              these!
-              </a></p>
+                these!
+              </a>
+            </p>
           </div>
 
           <hr className="my-8 border-blue-500" />
-
-
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutSection
+export default AboutSection;

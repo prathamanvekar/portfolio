@@ -1,49 +1,146 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { CardBody, CardContainer, CardItem } from "@/app/components/ui/3d-card"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { CardBody, CardContainer, CardItem } from "@/app/components/ui/3d-card";
 
-import medibot from "../../public/images/medibot.png"
-import hackathon from "../../public/images/hackathon.png"
-import divImage from "../../public/images/div.svg"
+import medibot from "../../public/images/medibot.png";
+import hackathon from "../../public/images/hackathon.png";
+import divImage from "../../public/images/div.svg";
+import koroImg from "../../public/images/koroimg.png";
+import imgper from "../../public/images/imgper.png";
+import videohub from "../../public/images/videohub.png";
 
 const projects = [
   {
     id: 1,
-    title: "ai medical vision bot",
-    description: "revolutionizing healthcare with ai assisted medical diagnoses using voice and image analysis",
-    image: medibot,
-    technologies: ["python", "tensorflow", "react", "node.js", "mongodb"],
+    title: "real-time facial recognition system",
+    description:
+      "a python-based facial recognition system with automated dataset creation, real-time recognition, and scalable training workflows.",
+    image: imgper,
+    technologies: ["python", "opencv", "haar cascades", "LBPH recognizer"],
     category: "ai/ml",
     status: "completed",
     featured: true,
+    links: {
+      demo: "https://github.com/prathamanvekar/image-personalizer",
+      code: "https://github.com/prathamanvekar/image-personalizer",
+    },
+    achievements: [
+      "Automated dataset creation and image preprocessing pipelines.",
+      "Implemented Haar Cascades and LBPH face recognizer with timestamped model versioning.",
+      "Validated recognition accuracy on real-time webcam inputs with reliable recognition rates.",
+      "Streamlined scalable model training and dataset management.",
+    ],
+  },
+  {
+    id: 2,
+    title: "video<hub/>",
+    description:
+      "a video hosting platform with upload, browsing, and playback features, built for seamless ux and responsive performance.",
+    image: videohub, // replace with actual image asset if available
+    technologies: [
+      "next.js",
+      "next-auth",
+      "imagekit",
+      "react",
+      "typescript",
+      "mongodb",
+      "vercel",
+    ],
+    category: "web development",
+    status: "live",
+    featured: true,
+    links: {
+      demo: "https://video-app-ten.vercel.app/",
+      code: "https://github.com/prathamanvekar/video-app",
+    },
+    achievements: [
+      "developed a video hosting platform with upload, browsing, and playback features.",
+      "engineered instant upload-on-file-select using imagekit while users filled in video metadata for seamless ux.",
+      "built full-stack architecture with next.js, react, typescript, mongodb, and next-auth.",
+      "deployed a performant, responsive web app on vercel.",
+    ],
+  },
+  {
+    id: 3,
+    title: "koro — to-do web application",
+    description:
+      "a full-stack to-do manager with user authentication, persistent storage, and a responsive ui.",
+    image: koroImg,
+    technologies: [
+      "next.js",
+      "react",
+      "next-auth",
+      "mongodb",
+      "typescript",
+      "node.js",
+      "vercel",
+    ],
+    category: "web development",
+    status: "live",
+    featured: true,
+    links: {
+      demo: "https://koro-brown.vercel.app/",
+      code: "https://github.com/prathamanvekar/koro",
+    },
+    achievements: [
+      "user registration and login via next-auth with session handling.",
+      "creating, reading, updating, and deleting (crud) to-do items with persistent storage in mongodb.",
+      "built a responsive, clean, and fluid ui using next.js, react, and typescript.",
+      "implemented custom middleware for route protection and user session management.",
+      "deployed scalable full-stack application via vercel.",
+    ],
+  },
+  {
+    id: 4,
+    title: "ai medical vision bot",
+    description:
+      "revolutionizing healthcare with ai assisted medical diagnoses using voice and image analysis",
+    image: medibot,
+    technologies: [
+      "python",
+      "ffmpeg",
+      "portaudio",
+      "tensorflow",
+      "openai",
+      "streamlit",
+    ],
+    category: "ai/ml",
+    status: "completed",
+    featured: false,
     links: {
       demo: "https://github.com/prathamanvekar/ai-medical-vision-bot",
       code: "https://github.com/prathamanvekar/ai-medical-vision-bot",
       case_study: "#",
     },
-    achievements: ["helpful for healthcare", "uses voice and image", "real-time processing"],
+    achievements: [
+      "helpful for healthcare",
+      "uses voice and image",
+      "real-time processing",
+    ],
   },
   {
-    id: 2,
+    id: 5,
     title: "cyber canvas website",
-    description: "this is the club portfolio website that won us the cyber canvas hackathon",
+    description:
+      "this is the club portfolio website that won us the cyber canvas hackathon",
     image: hackathon,
     technologies: ["react", "tailwind css", "framer motion", "vercel"],
     category: "web development",
     status: "live",
-    featured: true,
+    featured: false,
     links: {
       demo: "https://legacy-peer-deps.vercel.app",
       code: "https://github.com/prathamanvekar/legacy-peer-deps",
     },
-    achievements: ["1st place winner", "48-hour build", "responsive design"],
+    achievements: ["1st place winner", "4-hour build", "responsive design"],
   },
   {
-    id: 3,
+    id: 6,
     title: "center a div",
-    description: "i actually centered a div without using the flexbox, here's how",
+    description:
+      "i actually centered a div without using the flexbox, here's how",
     image: divImage,
     technologies: ["html", "css", "javascript"],
     category: "tutorial",
@@ -53,28 +150,38 @@ const projects = [
       demo: "https://www.youtube.com/watch?v=xvFZjo5PgG0",
       code: "https://www.youtube.com/watch?v=xvFZjo5PgG0",
     },
-    achievements: ["10k+ views", "educational content", "css mastery"],
+    achievements: ["10k+ views", "educational content", "css mastery","ITS A JOKE"],
   },
-]
+];
 
-const categories = ["all", "ai/ml", "web development", "tutorial"]
+
+const categories = ["all", "ai/ml", "web development", "tutorial"];
 
 const ProjectSection = () => {
-  const [activeCategory, setActiveCategory] = useState("all")
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const filteredProjects =
-    activeCategory === "all" ? projects : projects.filter((project) => project.category === activeCategory)
+    activeCategory === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeCategory);
 
   return (
     <section className="pb-10 z-10 font-serif" id="projects">
       <div className="flex flex-col max-w-8xl px-6 pb-8 mx-auto">
         <div className="w-full pb-8">
-          <h2 className="text-6xl font-semibold leading-none tracking-tighter py-5">projects</h2>
+          <h2 className="text-6xl font-semibold leading-none tracking-tighter py-5">
+            projects
+          </h2>
 
           <p className="text-2xl mb-8">
-            a collection of <span className="font-semibold text-blue-500">projects</span> that showcase my technical
-            skills and <span className="font-semibold text-blue-500">creative problem-solving</span> abilities.
+            a collection of{" "}
+            <span className="font-semibold text-blue-500">projects</span> that
+            showcase my technical skills and{" "}
+            <span className="font-semibold text-blue-500">
+              creative problem-solving
+            </span>{" "}
+            abilities.
           </p>
 
           {/* Category filters */}
@@ -114,8 +221,8 @@ const ProjectSection = () => {
                           project.status === "live"
                             ? "bg-green-100 text-green-600"
                             : project.status === "completed"
-                              ? "bg-blue-100 text-blue-600"
-                              : "bg-gray-100 text-gray-600"
+                            ? "bg-blue-100 text-blue-600"
+                            : "bg-gray-100 text-gray-600"
                         }`}
                       >
                         {project.status}
@@ -127,11 +234,18 @@ const ProjectSection = () => {
                       )}
                     </div>
 
-                    <CardItem translateZ="50" className="text-3xl font-bold mb-2">
+                    <CardItem
+                      translateZ="50"
+                      className="text-3xl font-bold mb-2"
+                    >
                       {project.title}
                     </CardItem>
 
-                    <CardItem as="p" translateZ="60" className="text-2xl max-w-sm mb-4">
+                    <CardItem
+                      as="p"
+                      translateZ="60"
+                      className="text-2xl max-w-sm mb-4"
+                    >
                       {project.description}
                     </CardItem>
 
@@ -139,7 +253,10 @@ const ProjectSection = () => {
                     <div className="mb-4">
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.slice(0, 3).map((tech) => (
-                          <span key={tech} className="px-2 py-1 text-sm bg-blue-50 text-blue-600 rounded">
+                          <span
+                            key={tech}
+                            className="px-2 py-1 text-sm bg-blue-50 text-blue-600 rounded"
+                          >
                             {tech}
                           </span>
                         ))}
@@ -169,14 +286,21 @@ const ProjectSection = () => {
                         exit={{ opacity: 0, height: 0 }}
                         className="mb-4"
                       >
-                        <h4 className="text-lg font-semibold mb-2 text-blue-500">key highlights:</h4>
+                        <h4 className="text-lg font-semibold mb-2 text-blue-500">
+                          key highlights:
+                        </h4>
                         <ul className="space-y-1">
-                          {project.achievements.map((achievement, achievementIndex) => (
-                            <li key={achievementIndex} className="text-sm flex items-start">
-                              <span className="text-blue-500 mr-2">•</span>
-                              {achievement}
-                            </li>
-                          ))}
+                          {project.achievements.map(
+                            (achievement, achievementIndex) => (
+                              <li
+                                key={achievementIndex}
+                                className="text-sm flex items-start"
+                              >
+                                <span className="text-blue-500 mr-2">•</span>
+                                {achievement}
+                              </li>
+                            )
+                          )}
                         </ul>
                       </motion.div>
                     )}
@@ -215,7 +339,9 @@ const ProjectSection = () => {
           {/* Project stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-500 mb-2">{projects.length}</div>
+              <div className="text-4xl font-bold text-blue-500 mb-2">
+                {projects.length}
+              </div>
               <div className="text-xl">projects completed</div>
             </div>
             <div className="text-center">
@@ -225,7 +351,9 @@ const ProjectSection = () => {
               <div className="text-xl">live applications</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-500 mb-2">{projects.filter((p) => p.featured).length}</div>
+              <div className="text-4xl font-bold text-blue-500 mb-2">
+                {projects.filter((p) => p.featured).length}
+              </div>
               <div className="text-xl">featured projects</div>
             </div>
             <div className="text-center">
@@ -238,7 +366,7 @@ const ProjectSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ProjectSection
+export default ProjectSection;
